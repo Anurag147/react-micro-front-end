@@ -4,9 +4,14 @@ import {mount} from 'marketing/MarketingIndex'
 const MarketingApp = () => {
     const ref = useRef(null);
 
-    useEffect(()=>{
-        mount(ref.current);//Mount marketing app to the current div which rendered by the container
-    },[]);
+    useEffect(() => {
+        mount(ref.current, {
+          onNavigate: () => {
+            console.log('The container noticed navigation in Marketing');
+          },
+        });
+      });
+      
     return (
         <>
            <div ref={ref}></div>
